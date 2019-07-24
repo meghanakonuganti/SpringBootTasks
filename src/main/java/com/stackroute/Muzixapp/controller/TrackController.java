@@ -61,6 +61,13 @@ public class TrackController {
         trackService.updateTrack(track);
         return new ResponseEntity<Track>(track,HttpStatus.OK);
     }
-    
+    @RequestMapping(method=RequestMethod.GET)
+    public ResponseEntity<?> getTrackByName(@RequestParam(value="name") String name) {
+        Track getTrack=(Track)trackService.findByName(name);
+        return new ResponseEntity<Track>(getTrack,HttpStatus.OK);
+
+
+    }
+
 }
 

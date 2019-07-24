@@ -13,5 +13,6 @@ public interface TrackService {
     public Track getTrackById(int id) throws TrackAlreadyExistsException, TrackNotFoundException;
     public void deleteTrack(int id);
     public Track updateTrack(Track track);
+    public List<Track> findByName(String name);
 
 }
