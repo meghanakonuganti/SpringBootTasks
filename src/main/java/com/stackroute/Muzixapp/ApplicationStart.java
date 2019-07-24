@@ -21,6 +21,7 @@ public class ApplicationStart implements ApplicationListener<ApplicationReadyEve
 
     @Override
     public void onApplicationEvent(final ApplicationReadyEvent event) {
+        System.out.println("Hello");
         trackRepository.save(new Track(1, "MEGHANA", "AVERAGE"));
     }
 
@@ -32,6 +33,5 @@ public class ApplicationStart implements ApplicationListener<ApplicationReadyEve
         });
     }
 }
-
 
 
