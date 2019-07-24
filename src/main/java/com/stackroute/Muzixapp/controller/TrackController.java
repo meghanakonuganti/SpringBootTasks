@@ -1,5 +1,4 @@
 package com.stackroute.Muzixapp.controller;
-
 import com.stackroute.Muzixapp.domain.Track;
 //import com.stackroute.Muzixapp.exceptions.TrackAlreadyExistsException;
 import com.stackroute.Muzixapp.exceptions.TrackAlreadyExistsException;
@@ -9,9 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-
+@ControllerAdvice
 @RestController
 @RequestMapping(value = "api/v2")
 public class TrackController {
@@ -39,15 +37,11 @@ public class TrackController {
     }
 
     @GetMapping("track/{id}")
-    public ResponseEntity<?> getTrackById(@PathVariable(value="id") int id) throws TrackAlreadyExistsException {
-        ResponseEntity responseEntity;
-        try{
-            trackService.getTrackById(id);
-            responseEntity=new ResponseEntity<String>("successfully created", HttpStatus.CREATED);
-        }catch(TrackAlreadyExistsException | TrackNotFoundException ex){
-            responseEntity=new ResponseEntity<String>(ex.getMessage(),HttpStatus.OK);
-        }
-        return responseEntity;
+    public Track getTrackById(@PathVariable(value="id") int id) {
+
+
+
+        return trackService.getTrackById(id);
     }
 
     @DeleteMapping("track/{id}")
@@ -65,9 +59,10 @@ public class TrackController {
     public ResponseEntity<?> getTrackByName(@RequestParam(value="name") String name) {
         Track getTrack=(Track)trackService.findByName(name);
         return new ResponseEntity<Track>(getTrack,HttpStatus.OK);
-
-
     }
-
+    @ExceptionHandler(TrackNotFoundException.class)
+    public ResponseEntity<?> notFoundEXception(final TrackNotFoundException e) {
+        return new ResponseEntity<String>(e.getMessage(),HttpStatus.CONFLICT);
+    }
 }
 

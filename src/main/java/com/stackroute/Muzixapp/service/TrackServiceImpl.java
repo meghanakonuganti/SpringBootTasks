@@ -2,7 +2,6 @@ package com.stackroute.Muzixapp.service;
 
 import com.stackroute.Muzixapp.domain.Track;
 import com.stackroute.Muzixapp.exceptions.TrackAlreadyExistsException;
-import com.stackroute.Muzixapp.exceptions.TrackNotFoundException;
 import com.stackroute.Muzixapp.repository.TrackRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,11 +34,10 @@ public class TrackServiceImpl implements TrackService{
     }
 
     @Override
-    public Track getTrackById(int id) throws TrackNotFoundException
+    public Track getTrackById(int id)
     {
-        if(!trackRepository.findById(id).isPresent()) {
-            throw new TrackNotFoundException("Does not exist");
-        }
+
+
         return trackRepository.getOne(id);
     }
 
