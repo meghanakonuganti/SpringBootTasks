@@ -28,7 +28,7 @@ public class TrackController {
         }
         return responseEntity;
     }
-    @GetMapping("track")
+    @GetMapping("tracks")
     public ResponseEntity<?> getTracks(){
         return new ResponseEntity<List<Track>>(trackService.getAllTracks(),HttpStatus.OK);
     }
@@ -42,7 +42,7 @@ public class TrackController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
     @PutMapping("track")
-    public ResponseEntity<Track> updateUser(@RequestBody Track track){
+    public ResponseEntity<Track> updateTracK(@RequestBody Track track){
         trackService.updateTrack(track);
         return new ResponseEntity<Track>(track,HttpStatus.OK);
     }
