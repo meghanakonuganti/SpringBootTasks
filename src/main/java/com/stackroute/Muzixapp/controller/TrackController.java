@@ -18,7 +18,7 @@ import java.util.List;
 @RequestMapping(value = "api/v2")
 public class TrackController {
     @Autowired
-    TrackService trackService;
+     private TrackService trackService;
 
     public TrackController(TrackService trackService)
     {
