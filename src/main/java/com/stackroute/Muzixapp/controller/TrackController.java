@@ -1,7 +1,6 @@
 package com.stackroute.Muzixapp.controller;
 
 import com.stackroute.Muzixapp.domain.Track;
-//import com.stackroute.Muzixapp.exceptions.TrackAlreadyExistsException;
 import com.stackroute.Muzixapp.exceptions.TrackAlreadyExistsException;
 import com.stackroute.Muzixapp.exceptions.TrackNotFoundException;
 import com.stackroute.Muzixapp.service.TrackService;
@@ -15,7 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "api/v2")
 public class TrackController {
-    TrackService trackService;
+     private TrackService trackService;
 
     public TrackController(TrackService trackService)
     {
