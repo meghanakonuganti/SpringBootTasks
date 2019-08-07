@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "api/v2")
 public class TrackController {
-    TrackService trackService;
+    private TrackService trackService;
 
     public TrackController(TrackService trackService)
     {
