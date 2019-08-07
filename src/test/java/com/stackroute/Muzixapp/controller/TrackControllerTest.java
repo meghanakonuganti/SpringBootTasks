@@ -85,7 +85,7 @@ public class TrackControllerTest{
                 .andDo(MockMvcResultHandlers.print());
     }
     @Test
-    public void updateUserSuccess() throws Exception
+    public void updateTrackSuccess() throws Exception
     {
         when(trackService.updateTrack(track)).thenReturn(track);
         mvc.perform(MockMvcRequestBuilders.put("/api/v2/track")
